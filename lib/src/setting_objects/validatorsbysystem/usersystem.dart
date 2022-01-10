@@ -1,25 +1,27 @@
 import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
-import 'package:interactivesso_shared/interactivesso_shared.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../../util/validator.dart';
 
 part 'usersystem.g.dart';
 
 @JsonSerializable()
-@TypeValidatorJsonConverter()
+@TypeValidatorStringJsonConverter()
 class UserSystemValidators implements Serializable<Map<String,dynamic>>{
-  final TypeValidator usernameValidator;
+  final TypeValidator<String> usernameValidator;
 
-  final TypeValidator emailValidator;
+  final TypeValidator<String> passwordFormatValidator;
 
-  final TypeValidator nicknameValidator;
+  final TypeValidator<String> emailValidator;
 
-  final TypeValidator signatureValidator;
+  final TypeValidator<String> nicknameValidator;
 
-  final TypeValidator userGroupIdValidator;
+  final TypeValidator<String> signatureValidator;
 
-  final TypeValidator userGroupDisplayNameValidator;
+  final TypeValidator<String> userGroupIdValidator;
 
-  final TypeValidator userGroupDescriptionValidator;
+  final TypeValidator<String> userGroupDisplayNameValidator;
+
+  final TypeValidator<String> userGroupDescriptionValidator;
 
   @override
   Map<String,dynamic> serialize([String? locale]) => _$UserSystemValidatorsToJson(this);
@@ -29,6 +31,7 @@ class UserSystemValidators implements Serializable<Map<String,dynamic>>{
 
   UserSystemValidators({
     required this.usernameValidator,
+    required this.passwordFormatValidator,
     required this.emailValidator,
     required this.nicknameValidator,
     required this.signatureValidator,

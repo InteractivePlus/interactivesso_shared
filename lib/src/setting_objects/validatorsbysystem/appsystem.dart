@@ -1,21 +1,21 @@
 import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
-import 'package:interactivesso_shared/interactivesso_shared.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../../util/validator.dart';
 
 part 'appsystem.g.dart';
 
 @JsonSerializable()
-@TypeValidatorJsonConverter()
+@TypeValidatorStringJsonConverter()
 class AppSystemValidators implements Serializable<Map<String,dynamic>>{
-  final TypeValidator appDisplayNameValidator;
+  final TypeValidator<String> appDisplayNameValidator;
   
-  final TypeValidator appDescriptionValidator;
+  final TypeValidator<String> appDescriptionValidator;
 
-  final TypeValidator appGroupIdValidator;
+  final TypeValidator<String> appGroupIdValidator;
 
-  final TypeValidator appGroupDisplayNameValidator;
+  final TypeValidator<String> appGroupDisplayNameValidator;
 
-  final TypeValidator appGroupDescriptionValidator;
+  final TypeValidator<String> appGroupDescriptionValidator;
 
   @override
   Map<String,dynamic> serialize([String? locale]) => _$AppSystemValidatorsToJson(this);

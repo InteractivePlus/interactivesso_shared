@@ -1,4 +1,4 @@
-import 'package:interactivesso_shared/interactivesso_shared.dart';
+import '../util//validator.dart';
 
 /// Reference: https://stackoverflow.com/a/36760050/8952818
 final TypeValidator<String> ipv4AddrValidator = StringRegexValidator(regExp: RegExp(

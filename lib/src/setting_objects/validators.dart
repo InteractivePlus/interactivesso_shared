@@ -1,7 +1,8 @@
 import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
-import 'package:interactivesso_shared/src/setting_objects/validatorsbysystem/appsystem.dart';
-import 'package:interactivesso_shared/src/setting_objects/validatorsbysystem/usersystem.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'validatorsbysystem/appsystem.dart';
+import 'validatorsbysystem/usersystem.dart';
 
 part 'validators.g.dart';
 

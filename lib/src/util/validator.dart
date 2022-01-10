@@ -1,7 +1,7 @@
 import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
 import 'package:characters/characters.dart';
-import 'package:interactivesso_shared/src/util/regexpserializer.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'regexpserializer.dart';
 
 part 'validator.g.dart';
 
@@ -77,7 +77,20 @@ class TypeValidatorJsonConverter implements JsonConverter<TypeValidator, Map<Str
   }
 }
 
-@JsonSerializable()
+class TypeValidatorStringJsonConverter implements JsonConverter<TypeValidator<String>, Map<String,dynamic>>{
+  const TypeValidatorStringJsonConverter();
+  @override
+  TypeValidator<String> fromJson(Map<String, dynamic> json) {
+    return TypeValidator.fromJson(json) as TypeValidator<String>;
+  }
+
+  @override
+  Map<String, dynamic> toJson(TypeValidator<String> object) {
+    return object.toJson();
+  }
+}
+
+@JsonSerializable(includeIfNull: false)
 class MapValidatorValue implements Serializable<Map<String,dynamic>>{
   @JsonKey(name: 'nullable')
   final bool isNullable;
@@ -97,7 +110,7 @@ class MapValidatorValue implements Serializable<Map<String,dynamic>>{
   static MapValidatorValue fromJson(Map<String,dynamic> json) => MapValidatorValue.fromMap(json);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class MapValidator extends TypeValidator<Map<String,dynamic>>{
   static const String TYPE_VALIDATOR = 'MapValidator';
 
@@ -129,7 +142,7 @@ class MapValidator extends TypeValidator<Map<String,dynamic>>{
   static MapValidator fromJson(Map<String,dynamic> json) => MapValidator.fromMap(json);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class DoubleRangeValidator extends TypeValidator<double>{
   static const String TYPE_VALIDATOR = 'DoubleRangeValidator';
 
@@ -158,7 +171,7 @@ class DoubleRangeValidator extends TypeValidator<double>{
   static DoubleRangeValidator fromJson(Map<String,dynamic> json) => DoubleRangeValidator.fromMap(json);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class IntRangeValidator extends TypeValidator<int>{
   static const String TYPE_VALIDATOR = 'IntRangeValidator';
 
@@ -187,7 +200,7 @@ class IntRangeValidator extends TypeValidator<int>{
   static IntRangeValidator fromJson(Map<String,dynamic> json) => IntRangeValidator.fromMap(json);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class StringRegexValidator extends TypeValidator<String>{
   static const String TYPE_VALIDATOR = 'StringRegexValidator';
 
@@ -241,7 +254,7 @@ class StringRegexValidator extends TypeValidator<String>{
   static StringRegexValidator fromJson(Map<String,dynamic> json) => StringRegexValidator.fromMap(json);  
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class HexStringValidator extends TypeValidator<String>{
   static const String TYPE_VALIDATOR = 'HexStringValidator';
 
@@ -270,7 +283,7 @@ class HexStringValidator extends TypeValidator<String>{
   static HexStringValidator fromJson(Map<String,dynamic> json) => HexStringValidator.fromMap(json);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class AnyOfValidator extends TypeValidator<dynamic>{
   static const String TYPE_VALIDATOR = "AnyOfValidator";
 
@@ -299,7 +312,7 @@ class AnyOfValidator extends TypeValidator<dynamic>{
   static AnyOfValidator fromJson(Map<String,dynamic> json) => AnyOfValidator.fromMap(json);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class ConstantStringValidator extends TypeValidator<String>{
   static const String TYPE_VALIDATOR = "ConstantStringValidator";
 
